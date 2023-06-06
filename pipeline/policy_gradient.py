@@ -477,7 +477,8 @@ def main():
             plt.savefig(os.path.join(localpath, f"log_{worker_id}.png"))
             print()
 
-            utils.async_to_bucket(localpath, args.savepath)
+            if utils.is_remote(args.savepath):
+                utils.async_to_bucket(localpath, args.savepath)
 
 
 if __name__ == "__main__":
